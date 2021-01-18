@@ -8,10 +8,12 @@ import {
   FlatList
 } from 'react-native';
 
+import Header from './Components/Header';
+
 const data = [
-  {user: "Giovana"},
-  {user: "Juliana"},
-  {user: "Ricardo"}
+  {id: 1, user: "Giovana"},
+  {id: 2, user: "Juliana"},
+  {id: 3, user: "Ricardo"}
 ]
 
 const App = () => {
@@ -19,9 +21,12 @@ const App = () => {
     <ScrollView>
       <FlatList
         data={data}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={item => 
           <Fragment>
-            <Text>{item.item.user}</Text>
+            <Header
+              userName={item.item.user}
+            />
             <Image 
               source={require("./resources/alura.jpg")}
               style={style.image}></Image>
