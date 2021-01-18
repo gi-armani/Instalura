@@ -4,26 +4,35 @@ import {
   Image, 
   ScrollView,
   Dimensions,
-  StyleSheet
+  StyleSheet,
+  FlatList
 } from 'react-native';
 
-const phoneWidth = Dimensions.get("screen").width;
+const data = [
+  {user: "Giovana"},
+  {user: "Juliana"},
+  {user: "Ricardo"}
+]
 
 const App = () => {
   return (
     <ScrollView>
-      <Text>Giovana</Text>
-      <Image 
-        source={require("./resources/alura.jpg")}
-        style={style.image}></Image>
-      <Text>Juliana</Text>
-      <Image 
-        source={require("./resources/alura.jpg")}
-        style={style.image}></Image>
+      <FlatList
+        data={data}
+        renderItem={item => 
+          <Fragment>
+            <Text>{item.item.user}</Text>
+            <Image 
+              source={require("./resources/alura.jpg")}
+              style={style.image}></Image>
+          </Fragment>
+        }
+      />
     </ScrollView>
   );
 };
 
+const phoneWidth = Dimensions.get("screen").width;
 const style = StyleSheet.create({
   image: {
     width: phoneWidth, 
