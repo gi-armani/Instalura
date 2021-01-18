@@ -1,20 +1,21 @@
 import React, {Fragment} from 'react';
 import {
   Text, 
-  Image
+  Image,
+  View
 } from 'react-native';
 
 import style from './style.js'
 
 const Header = ({userName}) => {
     return (
-        <Fragment>
+        <View style={style.header}>
             <Image 
                 source={require('../../resources/alura.jpg')}
                 style={style.userImage}
             />
             <Text>{userName}</Text>
-        </Fragment>
+        </View>
     )
 }
 
