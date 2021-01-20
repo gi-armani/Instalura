@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import {
   ScrollView,
   FlatList
@@ -7,25 +7,34 @@ import {
 import Header from './Components/Header';
 import Photo from './Components/Photo';
 
-const data = [
-  { id: 1, user: "Giovana" },
-  { id: 2, user: "Juliana" },
-  { id: 3, user: "Ricardo" }
-]
-
 const App = () => {
+  const [photos, setPhotos] = useState();
+  useEffect(() => {
+    const getPhotos = async() => {
+      const photosHTTP = await fetch("http://10.0.2.2:3030/feed")
+      const photosJson = await photosHTTP.json();
+      setPhotos(photosJson)
+    }
+
+    getPhotos();
+  }, [])
+
+  /* const photos = [
+    {id: 1, user: "Giovana"}
+  ] */
+
   return (
     <ScrollView>
       <FlatList
-        data={data}
-        keyExtractor={(item) => item.id.toString()}
+        data={photos}
+        
         renderItem={item =>
           <Fragment>
             <Header
               userName={item.item.user}
             />
             <Photo />
-          </Fragment>
+    </Fragment>
         }
       />
     </ScrollView>
