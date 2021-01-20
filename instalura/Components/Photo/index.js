@@ -14,8 +14,20 @@ const Photo = ({photoUrl, description}) => {
                 style={style.image}>
             </Image>
             <Text>{description}</Text>
+            <Image 
+                source={checkIfLiked(1)}
+                style={style.heartImage}
+            />
         </Fragment>
     )
+}
+
+const checkIfLiked = (numberOfLikes) => {
+    if(numberOfLikes > 0) {
+        return require('../../resources/s2Checked.png')
+    } else {
+        return require('../../resources/s2Unchecked.png')
+    }
 }
 
 export default Photo;
