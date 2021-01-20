@@ -1,16 +1,20 @@
 import React, {Fragment} from 'react';
 import {
-  Image
+  Image,
+  Text
 } from 'react-native';
 
 import style from './style.js'
 
-const Photo = () => {
+const Photo = ({photoUrl, description}) => {
     return (
-        <Image 
-            source={require("../../resources/alura.jpg")}
-            style={style.image}>
-        </Image>
+        <Fragment>
+            <Image 
+                source={{uri: photoUrl}}
+                style={style.image}>
+            </Image>
+            <Text>{description}</Text>
+        </Fragment>
     )
 }
 

@@ -19,21 +19,21 @@ const App = () => {
     getPhotos();
   }, [])
 
-  /* const photos = [
-    {id: 1, user: "Giovana"}
-  ] */
-
   return (
     <ScrollView>
       <FlatList
         data={photos}
-        
+        keyExtractor={(item) => item.id.toString()}
         renderItem={item =>
           <Fragment>
             <Header
-              userName={item.item.user}
+              userName={item.item.userName}
+              profilePictureUrl={item.item.userURL}
             />
-            <Photo />
+            <Photo
+              photoUrl={item.item.url}
+              description={item.item.description}
+            />
     </Fragment>
         }
       />
