@@ -1,12 +1,18 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import {
   Image,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native';
 
 import style from './style.js'
 
 const Photo = ({photoUrl, description}) => {
+    const [liked, setLiked] = useState(false);
+
+    const likePhoto = () => {
+        setLiked(!liked)
+    }
     return (
         <Fragment>
             <Image 
@@ -14,16 +20,18 @@ const Photo = ({photoUrl, description}) => {
                 style={style.image}>
             </Image>
             <Text>{description}</Text>
-            <Image 
-                source={checkIfLiked(1)}
-                style={style.heartImage}
-            />
+            <TouchableOpacity onPress={likePhoto}>
+                <Image 
+                    source={checkIfLiked(liked)}
+                    style={style.heartImage}
+                />
+            </TouchableOpacity>
         </Fragment>
     )
 }
 
-const checkIfLiked = (numberOfLikes) => {
-    if(numberOfLikes > 0) {
+const checkIfLiked = (liked) => {
+    if(liked) {
         return require('../../resources/s2Checked.png')
     } else {
         return require('../../resources/s2Unchecked.png')
