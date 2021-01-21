@@ -1,6 +1,11 @@
 import {StyleSheet} from 'react-native'
 
 const style = StyleSheet.create({
+    singleComment: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    
     commentView: {
         flexDirection: "row",
         alignItems: "center"
