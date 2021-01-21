@@ -6,6 +6,7 @@ import {
 
 import Header from './Components/Header';
 import Photo from './Components/Photo';
+import Comments from './Components/Comments';
 
 const App = () => {
   const [photos, setPhotos] = useState();
@@ -34,6 +35,9 @@ const App = () => {
               photoUrl={item.item.url}
               description={item.item.description}
               likesAmount={item.item.likes}
+            />
+            <Comments
+              comments={item.item.comentarios}
             />
     </Fragment>
         }
