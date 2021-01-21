@@ -1,16 +1,25 @@
 import React, {Fragment, useState} from 'react';
 import {
   Image,
+  View,
   Text,
   TouchableOpacity
 } from 'react-native';
 
 import style from './style.js'
 
-const Photo = ({photoUrl, description}) => {
+const Photo = ({photoUrl, description, likesAmount}) => {
     const [liked, setLiked] = useState(false);
+    const [likes, setLikes] = useState(likesAmount);
 
     const likePhoto = () => {
+        let qnt = likes;
+        if(liked) {
+            qnt--;
+        } else {
+            qnt++
+        }
+        setLikes(qnt)
         setLiked(!liked)
     }
     return (
@@ -20,12 +29,15 @@ const Photo = ({photoUrl, description}) => {
                 style={style.image}>
             </Image>
             <Text>{description}</Text>
-            <TouchableOpacity onPress={likePhoto}>
-                <Image 
-                    source={checkIfLiked(liked)}
-                    style={style.heartImage}
-                />
-            </TouchableOpacity>
+            <View style={style.heartView}>
+                <TouchableOpacity onPress={likePhoto}>
+                    <Image 
+                        source={checkIfLiked(liked)}
+                        style={style.heartImage}
+                    />
+                </TouchableOpacity>
+                <Text>{likes}</Text>
+            </View>
         </Fragment>
     )
 }

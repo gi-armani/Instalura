@@ -11,6 +11,11 @@ const style = StyleSheet.create({
     width: 40,
     height: 40,
     margin: 5
+  },
+
+  heartView: {
+    flexDirection: "row",
+    alignItems: "center"
   }
 })
 
