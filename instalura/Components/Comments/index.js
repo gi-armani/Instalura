@@ -3,7 +3,9 @@ import {
     Text,
     Image,
     View,
-    FlatList
+    FlatList,
+    TextInput,
+    TouchableOpacity
 } from 'react-native';
 
 import style from './style.js'
@@ -20,6 +22,18 @@ const Comments = ({ comments }) => {
                     </Text>
                 }
             />
+            <View style={style.commentView}>
+                <TextInput 
+                    placeholder={"Deixe seu comentário..."}
+                    style={style.commentInput}
+                />
+                <TouchableOpacity>
+                    <Image 
+                        source={require('../../resources/send.png')}
+                        style={style.sendImage}
+                    />
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
